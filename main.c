@@ -1,33 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int main(void)
+{
+    int i;
+    int poprawne = 1;
+    int liczbaSesji = 3;
+    double cenaKWh = 2.0;
+    double energia[3] = {10.0, 0.0, 2.5};
+    double koszty[3];
+    double suma = 0.0;
+    double maksimum = 0.0;
 
-/* tablica napisow */
-/* liczba argumentow --- s³ów */
+    for (i = 0; i < liczbaSesji; i++) {
+        if (energia[i] < 0.0) {
+            printf("Blad: energia nie moze byc ujemna.\n");
+            poprawne = 0;
+            break;
+        }
 
-int main(int argc, char *argv[]) {
+        koszty[i] = energia[i] * cenaKWh;
+        suma = suma + koszty[i];
 
-	float wynik = 0;
-	float x;
-	int i;
-	int liczba_zmiennych;
-	//atof 
-	//sscanf()
+        if (i == 0 || koszty[i] > maksimum) {
+            maksimum = koszty[i];
+        }
+    }
 
-
-	for (i=1; i<argc; i++) {
-	//wynik = wynik * atof(argv[i]);
-	liczba_zmiennych = sscanf(argv[i], "%f", &x);
-	if (liczba_zmiennych != 1) {
-		printf("Blad konwersji argumentu %s na liczbê zmiennoprzecinkowa.\n", argv[i]);
-		exit(-1);
-	}
-	wynik = wynik + x;
-}
-
-	printf("Suma = %f \n", wynik );
-		
-		
-	return 0;
-}
+    if (poprawne) {
+        printf("Cena energii: %.2f zl/kWh\n", cenaKWh);
+        for (i = 0; i < liczbaSesji; i++) {
+            printf("Sesja %d: %.2f kWh, koszt %.2f zl\n",
+                   i + 1, energia[i], koszty[i]);
+        }
+        printf("Suma kosztow: %.2f zl\n", suma);
+        printf("Najwiekszy koszt sesji: %.2f zl\n", maksimum);
+    }
