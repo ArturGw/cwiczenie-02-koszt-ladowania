@@ -21,10 +21,12 @@ int main() {
         {1.0, 2.0},
         {3.0, 4.0}
     };
+
     double B[MAX][MAX] = {
         {5.0, 6.0},
         {7.0, 8.0}
     };
+
     double C[MAX][MAX];
 
     int i, j;
@@ -33,6 +35,15 @@ int main() {
     for (i = 0; i < wA; i++) {
         for (j = 0; j < kA; j++) {
             C[i][j] = A[i][j] + B[i][j];
+            printf("%8.2f", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("\nRoznica A - B:\n");
+    for (i = 0; i < wA; i++) {
+        for (j = 0; j < kA; j++) {
+            C[i][j] = A[i][j] - B[i][j];
             printf("%8.2f", C[i][j]);
         }
         printf("\n");
