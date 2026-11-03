@@ -24,7 +24,7 @@ int main(void) {
         {4.1, 5.8, 6.2}
     };
 
-    int wB = 3, kB = 2; // Poprawiono wymiary B na zgodne z rzeczywistą inicjalizacją (3 wiersze, 2 kolumny)
+    int wB = 3, kB = 2;
     double B[MAX][MAX] = {
         {7.0, 8.1},
         {9.2, 10.3},
@@ -49,7 +49,7 @@ int main(void) {
 
     if (wymiary_poprawne(wA, kA) && wymiary_poprawne(wB, kB)) {
 
-        // Dodawanie i odejmowanie (wymagają takich samych wymiarów)
+        
         if (zgodne_do_sumy(wA, kA, wB, kB)) {
             dodaj(A, B, C, wA, kA);
             printf("\nSuma macierzy A i B:\n");
@@ -62,10 +62,10 @@ int main(void) {
             printf("\nNie mozna dodac ani odjac macierzy - maja rozne wymiary.\n");
         }
 
-        // Mnożenie (liczba kolumn A musi być równa liczbie wierszy B)
+        
         if (zgodne_do_mnozenia(kA, wB)) {
             pomnoz(A, B, C, wA, kA, kB);
-            // Wynik mnożenia macierzy (wA x kA) przez (wB x kB) ma wymiary wA x kB
+        
             printf("\nIloczyn macierzy A i B (wynik o wymiarach %dx%d):\n", wA, kB);
             wypisz(C, wA, kB);
         } else {
